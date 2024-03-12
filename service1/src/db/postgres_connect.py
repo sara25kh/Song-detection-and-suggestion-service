@@ -8,19 +8,22 @@ class postgresDataHandle():
         )
         self.conn.autocommit = True
 
-        cursor = self.conn.cursor()
+        self.cursor = self.conn.cursor()
         # cursor.execute('''DROP DATABASE IF EXISTS mydb''')
         # cursor.execute('''CREATE DATABASE mydb''')
         
-        cursor.execute('''CREATE TABLE SONG_INFO(
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS SONG_INFO(
                         ID INT NOT NULL,
                         EMAIL CHAR(50),
                         STATUS CHAR(10),
                         SONGID CHAR(30)
                     )''')
-        cursor.execute('''INSERT INTO SONG_INFO(ID ,EMAIl ,STATUS ,SONGID) 
-                       VALUES(2 , 'email','pending',null)
-                       ''')
+        # self.cursor.execute('''INSERT INTO SONG_INFO(ID ,EMAIl ,STATUS ,SONGID) 
+        #                VALUES(2 , 'email','pending',null)
+        #                ''')
+        # self.cursor.execute('''DELETE FROM SONG_INFO WHERE ID = 2''')
+        # print(self.cursor.execute('''SELECT * from SONG_INFO'''))
+
 
 
     def __del__(self):
@@ -29,7 +32,7 @@ class postgresDataHandle():
 
     def insert_data(self,id, email):
         self.cursor.execute(f'''INSERT INTO SONG_INFO(ID ,EMAIl ,STATUS ,SONGID) 
-                            VALUES({id} , {email} , 'pending' , null)
+                            VALUES({id} , '{email}' , 'pending' , null)
                             ''')  
 
     def fail(self,id):
