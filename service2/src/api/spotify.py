@@ -18,12 +18,12 @@ def search_spotify(title, artist):
     return spotify_track_id
 
 # Use the function in your code
-shazam_title = "My Girl"  # Replace with the actual title from the Shazam response
-shazam_artist = "Oskar Cyms"  # Replace with the actual artist from the Shazam response
+# shazam_title = "My Girl"  # Replace with the actual title from the Shazam response
+# shazam_artist = "Oskar Cyms"  # Replace with the actual artist from the Shazam response
 
-spotify_track_id = search_spotify(shazam_title, shazam_artist)
+# spotify_track_id = search_spotify(shazam_title, shazam_artist)
 
-print(f"Spotify Track ID: {spotify_track_id}")
+# print(f"Spotify Track ID: {spotify_track_id}")
 
 def get_spotifyID(shazam_title, shazam_artist):
     spotify_track_id = search_spotify(shazam_title, shazam_artist)

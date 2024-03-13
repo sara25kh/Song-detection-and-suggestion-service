@@ -8,11 +8,11 @@ class postgresDataHandle():
         )
         self.conn.autocommit = True
 
-        cursor = self.conn.cursor()
+        self.cursor = self.conn.cursor()
 
 
     def update_songID(self, song_id , id):
-        self.cursor.execute(f'''UPDATE SONG_INFO SET SONGID = {song_id}
+        self.cursor.execute(f'''UPDATE SONG_INFO SET SONGID = '{song_id}'
                              WHERE ID = {id}
                             ''')    
 

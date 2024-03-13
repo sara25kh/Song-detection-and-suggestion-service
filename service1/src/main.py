@@ -19,7 +19,7 @@ class service1handler():
         return email,file_name,file_path
 
     def send_info(self,email,file_name,file_path):
-        rabbitMQ.send(self.id)
+        rabbitMQ.send([self.id,file_name])
         s3.upload_file(file_name,file_path)
         self.postgres_obj.insert_data(self.id,email)
         self.id = self.id + 1
